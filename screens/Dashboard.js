@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import TabNavigator from '../components/Dashboard/TabNavigator'
-import AddBill from './Subscreens/AddBill'
+import Create from './Subscreens/Create'
 import Home from './Subscreens/Home'
 import Notifications from './Subscreens/Notifications'
 import Settings from './Subscreens/Settings'
@@ -20,7 +20,7 @@ export default function Dashboard() {
       </div>
       {tab == 'Home' && <Home />}
       {tab == 'Notifications' && <Notifications />}
-      {tab == 'Add Bill' && <AddBill />}
+      {tab == 'Create' && <Create />}
       {tab == 'Social' && <Social />}
       {tab == 'Settings' && <Settings />}
       <TabNavigator tab={tab} setTab={setTab} />

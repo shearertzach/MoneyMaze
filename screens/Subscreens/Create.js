@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import ActivityCreation from '../../components/Dashboard/ActivityCreation'
 import BillCreation from '../../components/Dashboard/BillCreation'
 
-export default function AddBill() {
+export default function Create() {
   const [creationType, setCreationType] = useState(null)
 
   return (
