@@ -6,7 +6,11 @@ module.exports = {
     './screens/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        "Montserrat": ["Montserrat"],
+      }
+    }
   },
   plugins: [],
 }

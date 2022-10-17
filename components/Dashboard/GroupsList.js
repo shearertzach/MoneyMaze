@@ -3,9 +3,9 @@ import React from 'react'
 export default function GroupsList({ groups, search }) {
   return (
     <div className='mt-7'>
-      <button className='mb-7 shadow-xs bg-blue-100 hover:bg-blue-200 w-full py-2.5 rounded-lg transition-all'>Add Group</button>
+      <button className='mb-7 shadow-xs bg-[#d6f033] bg-opacity-70 hover:bg-opacity-100 w-full py-2.5 rounded-lg transition-all'>Add Group</button>
       {groups.map(g => (
-        <div key={g.name} className={`p-4 bg-white my-1.5 rounded-md shadow-xs grid grid-cols-6`}>
+        <div key={g.name} className={`p-2 py-4 bg-white rounded-md shadow-xs grid grid-cols-6 hover:bg-slate-100 transition-all`}>
           <div className='col-span-5'>
             <h1 className='font-medium'>{g.name}</h1>
             <h3 className='text-sm text-gray-400 ml-2'>{g.created}</h3>
