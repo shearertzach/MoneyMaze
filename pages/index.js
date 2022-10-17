@@ -11,7 +11,7 @@ const Home = () => {
   console.log(auth)
 
   return (
-    <div className="bg-slate-100 max-w-[440px] w-11/12 h-[92vh] overflow-hidden rounded-3xl">
+    <div className="bg-slate-100 max-w-[440px] w-11/12 h-[92vh] rounded-3xl">
       {auth.user.loggedIn ? <Dashboard /> : <Splash />}
       {/* <button onClick={() => dispatch(signin())}>Sign In</button>
       <button onClick={() => dispatch(signout())}>Sign Out</button> */}

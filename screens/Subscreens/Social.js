@@ -36,7 +36,7 @@ export default function Social() {
   }, [search])
 
   return (
-    <div className='p-4'>
+    <div className='p-4 h-full overflow-scroll'>
       <SocialSearch value={search} change={setSearch} />
       <SocialTabs tab={tab} setTab={setTab} />
       {tab == 'Friends' && <FriendsList friends={search.length > 0 ? tempFriends : users} search={search} />}

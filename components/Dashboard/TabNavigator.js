@@ -3,7 +3,7 @@ import { SettingsSVG, CreateSVG, HomeSVG, NotificationsSVG, SocialSVG } from '..
 
 export default function TabNavigator({ tab, setTab }) {
   return (
-    <div className='px-3 py-3 fixed bottom-[4vh] max-w-[440px] border-t rounded-b-3xl w-full bg-slate-200 grid grid-cols-5'>
+    <div className='px-3 py-3 absolute bottom-0 border-t w-full bg-slate-200 grid grid-cols-5'>
       <HomeSVG onclick={() => setTab("Home")} active={tab == 'Home'} />
       <NotificationsSVG onclick={() => setTab("Notifications")} active={tab == 'Notifications'} />
       <CreateSVG onclick={() => setTab("Add Bill")} active={tab == 'Add Bill'} />

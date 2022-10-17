@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function FriendsList({ friends, search }) {
   return (
-    <div className='mt-7 overflow-hidden'>
+    <div className='mt-7'>
       <button className='mb-7 shadow-xs bg-blue-100 hover:bg-blue-200 w-full py-2.5 rounded-lg transition-all'>Add Friend</button>
       {friends.map(f => (
         <div key={f.id} className={`p-4 bg-white my-1.5 rounded-md shadow-xs`}>

@@ -14,8 +14,8 @@ export default function Dashboard() {
   const [tab, setTab] = useState('Home')
 
   return (
-    <div className='relative h-full overflow-scroll pb-16'>
-      <div className='py-5 sticky top-0 bg-slate-200 text-center text-xl font-medium shadow-sm'>
+    <div className='relative h-full py-16 rounded-3xl overflow-hidden'>
+      <div className='py-5 absolute w-full top-0 bg-slate-200  text-center text-xl font-medium shadow-sm'>
         <h2>{tab}</h2>
       </div>
       {tab == 'Home' && <Home />}
