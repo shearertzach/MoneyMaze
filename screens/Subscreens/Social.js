@@ -4,8 +4,8 @@ import GroupsList from '../../components/Dashboard/Social/GroupsList'
 import SocialSearch from '../../components/Dashboard/Social/SocialSearch'
 import SocialTabs from '../../components/Dashboard/Social/SocialTabs'
 import groups from '../../data/groups.json'
-import { useSelector } from 'react-redux'
-import { getAuthSlice } from '../../redux/auth'
+import { useDispatch, useSelector } from 'react-redux'
+import { getAuthSlice, signout } from '../../redux/auth'
 
 
 export default function Social() {
@@ -14,9 +14,12 @@ export default function Social() {
   const [tempFriends, setTempFriends] = useState([])
   const [tempGroups, setTempGroups] = useState([])
   const auth = useSelector(getAuthSlice)
+  const dispatch = useDispatch()
 
 
   useEffect(() => {
+    if (!auth.friends) dispatch(signout())
+
     const newF = []
     const newG = []
     if (tab == 'Friends') {
