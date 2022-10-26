@@ -9,8 +9,6 @@ const Home = () => {
   const auth = useSelector(getAuthSlice)
   const dispatch = useDispatch()
 
-  console.log(auth)
-
   return (
     <div className="bg-white max-w-[440px] w-11/12 h-[92vh] rounded-3xl">
       <Head>

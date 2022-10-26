@@ -6,7 +6,7 @@ export default function Settings() {
   const dispatch = useDispatch()
 
   return (
-    <div>
+    <div className='py-16'>
       <button onClick={() => dispatch(signout())}>Sign Out</button>
     </div>
   )

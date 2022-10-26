@@ -7,7 +7,7 @@ export default function GroupsList({ groups, search }) {
       {groups.map(g => (
         <div key={g.name} className={`p-2 py-4 bg-white rounded-md shadow-xs grid grid-cols-6 hover:bg-slate-100 transition-all`}>
           <div className='col-span-5'>
-            <h1 className='font-medium'>{g.name}</h1>
+            <h1>{g.name}</h1>
             <h3 className='text-sm text-gray-400 ml-2'>{g.created}</h3>
           </div>
           <div className='col-span-1 flex justify-center items-center'>

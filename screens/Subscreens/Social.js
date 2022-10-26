@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import FriendsList from '../../components/Dashboard/FriendsList'
-import GroupsList from '../../components/Dashboard/GroupsList'
-import SocialSearch from '../../components/Dashboard/SocialSearch'
-import SocialTabs from '../../components/Dashboard/SocialTabs'
-import users from '../../data/users.json'
+import FriendsList from '../../components/Dashboard/Social/FriendsList'
+import GroupsList from '../../components/Dashboard/Social/GroupsList'
+import SocialSearch from '../../components/Dashboard/Social/SocialSearch'
+import SocialTabs from '../../components/Dashboard/Social/SocialTabs'
 import groups from '../../data/groups.json'
+import { useSelector } from 'react-redux'
+import { getAuthSlice } from '../../redux/auth'
 
 
 export default function Social() {
@@ -12,18 +13,19 @@ export default function Social() {
   const [search, setSearch] = useState('')
   const [tempFriends, setTempFriends] = useState([])
   const [tempGroups, setTempGroups] = useState([])
+  const auth = useSelector(getAuthSlice)
 
 
   useEffect(() => {
-    const newU = []
+    const newF = []
     const newG = []
     if (tab == 'Friends') {
-      users.map(u => {
-        const nameLower = u.firstName.toLowerCase() + ' ' + u.lastName.toLowerCase()
+      auth.friends.map(f => {
+        const nameLower = f.name.toLowerCase()
         const searchLower = search.toLowerCase()
-        if (nameLower.includes(searchLower)) newU.push(u)
+        if (nameLower.includes(searchLower)) newF.push(f)
       })
-      setTempFriends(newU)
+      setTempFriends(newF)
     }
     if (tab == 'Groups') {
       groups.map(g => {
@@ -36,10 +38,10 @@ export default function Social() {
   }, [search])
 
   return (
-    <div className='p-4 h-full overflow-scroll'>
+    <div className='p-4 h-full overflow-scroll py-20'>
       <SocialSearch value={search} change={setSearch} />
       <SocialTabs tab={tab} setTab={setTab} />
-      {tab == 'Friends' && <FriendsList friends={search.length > 0 ? tempFriends : users} search={search} />}
+      {tab == 'Friends' && <FriendsList friends={search.length > 0 ? tempFriends : auth.friends} search={search} />}
       {tab == 'Groups' && <GroupsList groups={search.length > 0 ? tempGroups : groups} search={search} />}
     </div>
   )
