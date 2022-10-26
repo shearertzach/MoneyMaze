@@ -17,7 +17,7 @@ export default function Home() {
     <div className='relative p-4 h-full overflow-scroll py-16 '>
       {/* <h1 className='text-xl my-3'>Your Bills</h1> */}
       <div className='flex justify-center items-center flex-col mt-3'>
-        {(auth.bills > 0) &&
+        {(auth.bills.length > 0) &&
           auth.bills.map(b => <Bill
             key={b.id}
             b={b}

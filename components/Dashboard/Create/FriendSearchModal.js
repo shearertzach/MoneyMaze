@@ -20,6 +20,7 @@ export default function FriendSearchModal({ close, friends, addFriend, addedFrie
               </button>
             )
           })}
+          {(friends.length < 1) && <p className='text-center'>You have not added any friends. Visit the social tab to add friends.</p>}
         </div>
       </div>
       <div className='absolute w-full h-full top-0 right-0 bg-black bg-opacity-60 z-10' onClick={close} />
