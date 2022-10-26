@@ -18,10 +18,10 @@ export default function Dashboard() {
       <div className='py-5 absolute w-full top-0 bg-[#333333] text-white text-center text-xl font-medium shadow-sm'>
         <h2>{tab}</h2>
       </div>
-      {/* {tab == 'Home' && <Home />} */}
-      {/* {tab == 'Notifications' && <Notifications />} */}
-      {/* {tab == 'Create' && <Create />} */}
-      {/* {tab == 'Social' && <Social />} */}
+      {tab == 'Home' && <Home />}
+      {tab == 'Notifications' && <Notifications />}
+      {tab == 'Create' && <Create />}
+      {tab == 'Social' && <Social />}
       {tab == 'Settings' && <Settings />}
       <TabNavigator tab={tab} setTab={setTab} />
     </div>
