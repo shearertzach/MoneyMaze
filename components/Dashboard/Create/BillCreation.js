@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addBill, getAuthSlice } from '../../../redux/auth'
+import { v4 as uuidv4 } from 'uuid';
 import TabHeader from '../TabHeader'
 import AddItems from './AddItems'
 import BillInfo from './BillInfo'
@@ -64,8 +65,14 @@ export default function BillCreation({ type, close }) {
             setStep(0)
             close()
             dispatch(addBill({
+              id: uuidv4(),
               name: billName,
-              users: [...addedFriends],
+              date: new Date().toLocaleDateString(),
+              users: addedFriends.map(af => {
+                return {
+                  ...af, paid: false
+                }
+              }),
               items: [...items]
             }))
           }}

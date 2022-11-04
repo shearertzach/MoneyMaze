@@ -4,7 +4,7 @@ import { MoneySVG } from '../Util/Icons/Other'
 export default function Bill({ b, setBill }) {
   return (
     <div
-      onClick={() => setBill(b)}
+      onClick={() => setBill(b.id)}
       className={`w-11/12 rounded-md my-1.5 flex gap-6 cursor-pointer transition-all items-center hover:bg-gray-200 bg-opacity-10 p-2`}
     >
       <MoneySVG className={'bg-slate-100 p-3 rounded-full text-slate-800'} />

@@ -6,7 +6,7 @@ import BillView from '../../components/Dashboard/BillView'
 
 export default function Home() {
   const auth = useSelector(getAuthSlice)
-  const [currentBill, setCurrentBill] = useState(null)
+  const [billId, setBillId] = useState(null)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -21,10 +21,10 @@ export default function Home() {
           auth.bills.map(b => <Bill
             key={b.id}
             b={b}
-            setBill={setCurrentBill}
+            setBill={setBillId}
           />)}
       </div>
-      {currentBill && <BillView bill={currentBill} close={() => setCurrentBill(null)} />}
+      {billId && <BillView billid={billId} close={() => setBillId(null)} />}
     </div>
   )
 }

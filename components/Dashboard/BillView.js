@@ -1,7 +1,13 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { editBill, getAuthSlice } from '../../redux/auth'
 import { PreviousSVG } from '../Util/Icons/Other'
 
-export default function BillView({ bill, close }) {
+
+export default function BillView({ billid, close }) {
+  const dispatch = useDispatch()
+  const auth = useSelector(getAuthSlice)
+  const bill = auth.bills[auth.bills.findIndex(b => b.id == billid)]
 
   return (
     <div className='absolute top-0 left-0 h-full w-full bg-white z-20 pt-[150px]'>
@@ -32,7 +38,7 @@ export default function BillView({ bill, close }) {
       </div>
       <div className='max-h-[75%] overflow-scroll p-3 mt-5 rounded-md'>
         {bill.items.map(i => (
-          <div className='flex justify-between'>
+          <div key={i.id} className='flex justify-between'>
             <p>{i.name}</p>
             <p>{i.price}</p>
           </div>
@@ -40,8 +46,8 @@ export default function BillView({ bill, close }) {
       </div>
       <div className='absolute bottom-0 left-0 py-4 w-full bg-slate-100 overflow-y-hidden overflow-x-scroll whitespace-nowrap'>
         {bill.users.map(u => (
-          <div className='mx-3 overflow-hidden inline-block w-16 text-center'>
-            <div className='w-12 h-12 rounded-full bg-slate-200 mx-auto' />
+          <div key={u.id} className='mx-3 overflow-hidden inline-block w-16 text-center' onClick={() => dispatch(editBill({ billid: bill.id, userid: u.id }))}>
+            <div className={`w-12 h-12 rounded-full ${u.paid ? 'bg-green-200' : 'bg-slate-200'} mx-auto`} />
             <p>{u.name.slice(0, 6)}</p>
           </div>
         ))}

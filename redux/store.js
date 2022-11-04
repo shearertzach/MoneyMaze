@@ -6,7 +6,7 @@ import auth from './auth'
 
 
 const rootReducer = combineReducers({
-  auth,
+  auth
 })
 
 

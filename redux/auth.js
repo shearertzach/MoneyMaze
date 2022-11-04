@@ -1,6 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import { addBillPending, addBillRejected, addBillSuccess, addFriendPending, addFriendRejected, addFriendSuccess, signInPending, signInRejected, signInSuccess } from './builderfunctions'
-
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
+import { auth } from '../firebase'
+import { addBillPending, addBillRejected, addBillSuccess, addFriendPending, addFriendRejected, addFriendSuccess, editBillPending, editBillRejected, editBillSuccess, signInPending, signInRejected, signInSuccess } from './builderfunctions'
 
 const initialState = {
   user: {
@@ -18,7 +19,10 @@ const initialState = {
 export const signin = createAsyncThunk(
   'auth/signin',
   async () => {
-    return
+    const provider = new GoogleAuthProvider()
+    const login = await signInWithPopup(auth, provider)
+    const user = login.user
+    return user
   }
 )
 
@@ -29,11 +33,17 @@ export const addBill = createAsyncThunk(
     bill.items.map(i => total += Number(i.price))
     const modified = {
       ...bill,
-      date: new Date().toLocaleDateString(),
       total,
       pricePerPerson: total / (bill.users.length + 1)
     }
     return modified
+  }
+)
+
+export const editBill = createAsyncThunk(
+  'auth/editbill',
+  async ({ billid, userid }) => {
+    return { billid, userid }
   }
 )
 
@@ -61,6 +71,9 @@ const authSlice = createSlice({
       .addCase(addBill.rejected, addBillRejected)
       .addCase(addBill.pending, addBillPending)
       .addCase(addBill.fulfilled, addBillSuccess)
+      .addCase(editBill.rejected, editBillRejected)
+      .addCase(editBill.pending, editBillPending)
+      .addCase(editBill.fulfilled, editBillSuccess)
       .addCase(addFriend.rejected, addFriendRejected)
       .addCase(addFriend.pending, addFriendPending)
       .addCase(addFriend.fulfilled, addFriendSuccess)
