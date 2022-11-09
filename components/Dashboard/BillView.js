@@ -36,11 +36,12 @@ export default function BillView({ billid, close }) {
         </div>
         <PreviousSVG className={'absolute top-[22.5px] left-4'} onclick={close} />
       </div>
-      <div className='max-h-[75%] overflow-scroll p-3 mt-5 rounded-md'>
+      <p className='mt-5 ml-3.5 font-semibold'>Items</p>
+      <div className='max-h-[75%] overflow-scroll p-5 mt-2 rounded-md'>
         {bill.items.map(i => (
           <div key={i.id} className='flex justify-between'>
-            <p>{i.name}</p>
-            <p>{i.price}</p>
+            <p>{i.name.toUpperCase()}</p>
+            <p>${i.price}</p>
           </div>
         ))}
       </div>
